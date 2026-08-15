@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .welcome {
+            background: #fff;
+            text-align: center;
+            padding: 0 28px;
+        }
+
+        .welcome .logo {
+            margin: 30px auto;
+            width: 120px;
+            height: 120px;
+            display: grid;
+            place-items: center;
+        }
+
+        .welcome .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .welcome h1 {
+            font-size: 31px;
+            margin: 0;
+        }
+
+        .welcome p {
+            color: #667085;
+            font-size: 16px;
+            line-height: 1.45;
+            margin: 10px 0 48px;
+        }
+
+        .art {
+            height: 185px;
+            position: relative;
+            margin-bottom: 28px;
+        }
+
+        .bot {
+            position: absolute;
+            left: 50%;
+            top: 42px;
+            transform: translateX(-50%);
+            width: 170px;
+            height: 120px;
+            padding: 18px;
+            border: 1px solid #e1e7f0;
+            border-radius: 22px;
+            background: white;
+            box-shadow: 0 8px 20px #182a4715;
+        }
+
+        .bot b {
+            display: grid;
+            place-items: center;
+            margin: auto auto 10px;
+            width: 50px;
+            height: 48px;
+            border-radius: 16px;
+            background: #4d6399;
+            color: #fff;
+            font-size: 24px;
+        }
+
+        .sheet {
+            position: absolute;
+            top: 20px;
+            width: 96px;
+            height: 120px;
+            border-radius: 14px;
+            padding: 13px;
+            text-align: left;
+        }
+
+        .sheet:before,
+        .sheet:after {
+            content: "";
+            display: block;
+            height: 6px;
+            border-radius: 3px;
+            margin-top: 11px;
+        }
+
+        .sheet.left {
+            left: 8px;
+            background: #eaf8f1;
+            border: 1px solid #bdebd5;
+            transform: rotate(6deg);
+            color: #16a36a;
+        }
+
+        .sheet.left:before {
+            background: #8bd9b6;
+        }
+
+        .sheet.left:after {
+            width: 60%;
+            background: #bdebd5;
+        }
+
+        .sheet.right {
+            right: 6px;
+            top: 52px;
+            background: #eaf1ff;
+            border: 1px solid #c8daff;
+            transform: rotate(-6deg);
+            color: #4d6399;
+        }
+
+        .sheet.right:before {
+            background: #90b4ff;
+        }
+
+        .sheet.right:after {
+            width: 60%;
+            background: #c8daff;
+        }
+
+        .learn {
+    display: block;
+    margin-top: 35px;  
+    color: #13a873;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    background: none;
+    border: 0;
+}
+
+        .learn:hover,
+        .learn:focus-visible {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="screen welcome">
+        <div class="status">
+            
+        </div>
+        <div class="logo">
+            <img src="images/EduLens-logo.png" alt="EduLens AI logo">
+        </div>
+        <h1>EduLens AI</h1>
+        <p>Analyze social media posts with trusted<br>evidence.</p>
+        <div class="art">
+            <div class="sheet left">▤</div>
+            <div class="bot">
+                <b>♙</b>Checking the facts
+            </div>
+            <div class="sheet right">▧</div>
+        </div>
+        <button class="primary" onclick="startApp()">Get Started</button>
+        <a class="learn" href="LearnMore.html">Learn More <span aria-hidden="true">→</span></a>
+    </div>
+    <script src="js/navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+[
+  {
+    "claim": "Stanford University is offering free online AI courses with certificates.",
+    "verdict": "Partially Supported",
+    "confidence": 93,
+    "reason": "Stanford offers some free AI courses, but most verified certificates require payment.",
+    "evidence": [
+      "✅ Stanford Online offers some free AI courses.",
+      "❌ Most certificates require payment.",
+      "✅ Official Stanford Online information confirms this."
+    ],
+    "sources": [
+      {
+        "publisher": "Stanford Online",
+        "title": "Artificial Intelligence Courses",
+        "rating": "Official",
+        "url": "https://online.stanford.edu"
+      },
+      {
+        "publisher": "Harvard Online",
+        "title": "Online Learning",
+        "rating": "Official",
+        "url": "https://pll.harvard.edu"
+      },
+      {
+        "publisher": "MIT Open Learning",
+        "title": "MIT Open Learning",
+        "rating": "Official",
+        "url": "https://openlearning.mit.edu"
+      },
+      {
+        "publisher": "Coursera",
+        "title": "Online Courses",
+        "rating": "Trusted",
+        "url": "https://www.coursera.org"
+      },
+      {
+        "publisher": "UNESCO",
+        "title": "Education Resources",
+        "rating": "Official",
+        "url": "https://www.unesco.org"
+      },
+      {
+        "publisher": "TUM",
+        "title": "International Students Procedure",
+        "rating": "Official",
+        "url": "https://www.tum.de/en/studies/international-students"
+      },
+      {
+        "publisher": "Heidelberg University",
+        "title": "International Studies Procedure",
+        "rating": "Official",
+        "url": "https://www.uni-heidelberg.de/en/study/international-studies"
+      },
+      {
+        "publisher": "LMU Munich",
+        "title": "LMU International Students",
+        "rating": "Official",
+        "url": "https://www.lmu.de/en/"
+      },
+      {
+        "publisher": "HU Berlin",
+        "title": "International Students Application Procedure",
+        "rating": "Official",
+        "url": "https://www.hu-berlin.de/en/study/before-your-studies/apply/international-students"
+      },
+      {
+        "publisher": "TU Dresden",
+        "title": "International Procedure",
+        "rating": "Official",
+        "url": "https://tu-dresden.de/studium/vor-dem-studium/internationales"
+      },
+      {
+        "publisher": "University of Cologne",
+        "title": "International Students Portal",
+        "rating": "Official",
+        "url": "https://portal.uni-koeln.de/en/international"
+      },
+      {
+        "publisher": "Wikipedia",
+        "title": "Background Information",
+        "rating": "Background Only",
+        "url": "https://en.wikipedia.org"
+      }
+    ]
+  }
+]

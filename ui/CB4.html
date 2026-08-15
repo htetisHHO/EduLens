@@ -1,0 +1,229 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      .chat-head {
+        height: 123px;
+        background: #4d6399;
+        color: #fff;
+        padding: 15px 18px 14px;
+      }
+
+      .chat-brand {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        margin-top: 16px;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .tiny-logo {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        object-fit: cover;
+        background: #fff;
+        color: #4d6399;
+        padding: 0;
+        display: grid;
+        place-items: center;
+        font-size: 16px;
+        line-height: 1;
+      }
+
+      .right {
+        margin-left: auto;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .bell,
+      .avatar {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+      }
+
+      .bell {
+        background: #6579aa;
+      }
+
+      .avatar {
+        background: #10ae72;
+        border: 1px solid #b6edd7;
+        font-size: 10px;
+        color: #fff;
+        font-weight: 700;
+        line-height: 1;
+        padding: 0;
+      }
+
+      .topbar {
+        padding: 8px 0 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 2px;
+      }
+
+      .topbar h1 {
+        margin: 0;
+        font-size: 19px;
+      }
+
+      .topbar .icon-btn {
+        width: 38px;
+        height: 38px;
+        border: 0;
+        border-radius: 50%;
+        background: #6b7ead;
+        color: #fff;
+        display: grid;
+        place-items: center;
+        font-size: 22px;
+        line-height: 1;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      .box {
+        padding: 15px;
+        margin-bottom: 9px;
+      }
+
+      .box h3 {
+        font-size: 14px;
+        margin: 0 0 9px;
+      }
+
+      .box p {
+        font-size: 13px;
+        line-height: 1.4;
+        margin: 0;
+      }
+
+      .box.note {
+        background: #eaf1ff;
+      }
+
+      .box.note p {
+        color: #315691;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="screen">
+      <header class="chat-head">
+        <div class="chat-brand">
+          <img class="tiny-logo" src="images/EduLens-logo.png" alt="EduLens logo" onclick="openDrawer()" style="cursor:pointer;">
+          <span onclick="openDrawer()" style="cursor:pointer;">EduLens AI</span>
+          <span class="right">
+            <span class="bell">♧</span>
+            <button class="avatar" type="button" onclick="goProfile()" style="cursor:pointer; border:0; color:#fff;">MK</button>
+          </span>
+        </div>
+        <div class="topbar">
+          <button class="icon-btn back" onclick="goBack()">‹</button>
+          <h1>Analysis Result</h1>
+        </div>
+      </header>
+      <main class="page">
+        <section class="card box">
+          <div class="row between">
+            <h3>Credibility Assessment</h3>
+            <span id="verdict" class="pill">Review evidence</span>
+          </div>
+          <p id="reason">
+            Paste a claim in Home Chat to begin an evidence-based review.
+          </p>
+        </section>
+        <section class="card box">
+          <h3>Main Claim</h3>
+          <p id="claim">No claim analyzed yet.</p>
+        </section>
+        <section class="card box">
+          <h3>Source Reliability</h3>
+          <p id="reliability">
+            Publisher identity, direct source links, and published fact-check status
+            are reviewed.
+          </p>
+        </section>
+        <section class="card box note">
+          <h3>Educational Tip</h3>
+          <p id="tip">
+            Check the original source, date, and context before sharing a claim.
+          </p>
+        </section>
+        <button class="primary" onclick="openSources()">View Real Sources</button>
+      </main>
+    </div>
+    <script src="js/navigation.js"></script>
+    <script>
+      const r = JSON.parse(localStorage.getItem("truthlensResult") || "null");
+      const claimText = (r && r.claim) || localStorage.getItem("currentClaim") || "Your claim";
+
+      async function loadClaimData() {
+        try {
+          const response = await fetch("claims.json");
+          const data = await response.json();
+          return data.find((item) =>
+            item.claim && claimText.toLowerCase().includes(item.claim.toLowerCase())
+          ) || null;
+        } catch (error) {
+          return null;
+        }
+      }
+
+      function buildReliabilitySummary(match, result) {
+        const sources = (match && match.sources) || (result && result.sources) || [];
+        if (!sources.length) {
+          return "No reliable sources were matched for this claim yet.";
+        }
+
+        const publishers = sources.slice(0, 3).map((source) => source.publisher || source.title || "Source");
+        const summary = publishers.join(", ");
+        return `Reviewed against ${sources.length} source${sources.length === 1 ? "" : "s"}: ${summary}${sources.length > 3 ? ", ..." : ""}`;
+      }
+
+      async function populateResult() {
+        const match = await loadClaimData();
+        const claimEl = document.getElementById("claim");
+        const verdictEl = document.getElementById("verdict");
+        const reasonEl = document.getElementById("reason");
+        const reliabilityEl = document.getElementById("reliability");
+        const tipEl = document.getElementById("tip");
+
+        if (r) {
+          claimEl.textContent = r.claim;
+          verdictEl.textContent = r.verdict || "Review evidence";
+          reasonEl.textContent = r.explanation || "No explanation available yet.";
+          reliabilityEl.textContent =
+            r.source_reliability || buildReliabilitySummary(match, r);
+          tipEl.textContent = r.tip || "Check the original source and publication date.";
+        } else if (match) {
+          claimEl.textContent = match.claim;
+          verdictEl.textContent = match.verdict || "Review evidence";
+          reasonEl.textContent = match.reason || "No explanation available yet.";
+          reliabilityEl.textContent = buildReliabilitySummary(match, null);
+          tipEl.textContent = "Check the original source and publication date before sharing.";
+        } else {
+          claimEl.textContent = claimText;
+          verdictEl.textContent = "Review evidence";
+          reasonEl.textContent = "No claim data is available yet.";
+          reliabilityEl.textContent = "No reliable sources were matched for this claim yet.";
+          tipEl.textContent = "Check the original source and publication date.";
+        }
+      }
+
+      populateResult();
+    </script>
+  </body>
+</html>

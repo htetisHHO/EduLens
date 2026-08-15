@@ -1,0 +1,351 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      .chat-head {
+        height: 123px;
+        background: #4d6399;
+        color: #fff;
+        padding: 15px 18px 14px;
+      }
+
+      .chat-brand {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        margin-top: 16px;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .back-icon {
+        width: 38px;
+        height: 38px;
+        border: 0;
+        border-radius: 50%;
+        background: #6b7ead;
+        color: #fff;
+        display: grid;
+        place-items: center;
+        font-size: 22px;
+        line-height: 1;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+      }
+
+      .tiny-logo {
+        width: 30px;
+        height: 30px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        object-fit: cover;
+        object-fit: contain;
+        background: #fff;
+        color: #4d6399;
+        padding: 0;
+        display: grid;
+        place-items: center;
+        font-size: 16px;
+        line-height: 1;
+      }
+
+      .right {
+        margin-left: auto;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .bell,
+      .avatar {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+      }
+
+      .bell {
+        background: #6579aa;
+      }
+
+      .avatar {
+        background: #10ae72;
+        border: 1px solid #b6edd7;
+        font-size: 10px;
+        color: #fff;
+        font-weight: 700;
+        line-height: 1;
+        padding: 0;
+      }
+
+      .topbar .icon-btn {
+        width: 38px;
+        height: 38px;
+        border: 0;
+        border-radius: 50%;
+        background: #6b7ead;
+        color: #fff;
+        display: grid;
+        place-items: center;
+        font-size: 22px;
+        line-height: 1;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+        margin-top: 1px;
+      }
+
+      .new-chat-pill {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        margin-left: auto;
+        padding: 6px 8px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.16);
+        color: #fff;
+        cursor: pointer;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+      }
+
+      .new-chat-pill .mini-icon {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #fff;
+        color: #4d6399;
+        display: grid;
+        place-items: center;
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .new-chat-float {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 14px;
+        border-radius: 999px;
+        background: #14a873;
+        color: #fff;
+        font-size: 13px;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 12px 30px rgba(20, 168, 115, 0.22);
+        z-index: 20;
+      }
+
+      .new-chat-float .mini-icon {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: #fff;
+        color: #14a873;
+        display: grid;
+        place-items: center;
+        font-size: 14px;
+        font-weight: 800;
+      }
+
+      .notice {
+        padding: 14px;
+        background: var(--mint);
+        border-color: #bdebd5;
+        margin: 12px 0;
+      }
+
+      .source-card {
+        padding: 14px;
+        margin-bottom: 10px;
+      }
+
+      .source-card h3 {
+        font-size: 14px;
+        margin: 9px 0;
+      }
+
+      .source-card p {
+        font-size: 12px;
+        line-height: 1.35;
+        color: #667085;
+        margin: 0;
+      }
+
+      .source-head {
+        gap: 10px;
+      }
+
+      .source-head b {
+        font-size: 14px;
+      }
+
+      .source-head .pill {
+        margin-left: auto;
+      }
+
+      .empty {
+        padding: 24px;
+        text-align: center;
+        color: #667085;
+        font-size: 13px;
+        line-height: 1.45;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="screen">
+      <header class="chat-head">
+        <div class="chat-brand">
+          <img class="tiny-logo" src="images/EduLens-logo.png" alt="EduLens logo" onclick="openDrawer()" style="cursor:pointer;">
+          <span onclick="openDrawer()" style="cursor:pointer;">EduLens AI</span>
+          <span class="right">
+            <span class="bell">♧</span>
+            <button class="avatar" type="button" onclick="goProfile()" style="cursor:pointer; border:0; color:#fff;">MK</button>
+          </span>
+        </div>
+        <div class="topbar">
+          <button class="icon-btn back" onclick="goBack()">‹</button>
+          <h1>Trusted Evidence</h1>
+        </div>
+      </header>
+      <main id="sources" class="page"></main>
+      <div class="new-chat-float" onclick="goTo('CB2.html')">
+        <span class="mini-icon">✚</span>
+        <span>New Chat</span>
+      </div>
+    </div>
+
+    <script src="js/navigation.js"></script>
+    <script>
+      const r = JSON.parse(localStorage.getItem("truthlensResult") || "null");
+      const root = document.getElementById("sources");
+      const claimText = (r && r.claim) || localStorage.getItem("currentClaim") || "Your claim";
+
+      function normalizeSources(sourceList) {
+        if (!Array.isArray(sourceList)) return [];
+        return sourceList
+          .filter(Boolean)
+          .map((s) => ({
+            publisher: s.publisher || s.source || s.name || "Source",
+            title: s.title || s.label || s.publisher || "Source",
+            rating: s.rating || s.type || "Source",
+            url: s.url || s.link || ""
+          }))
+          .filter((s) => s.title || s.publisher || s.url);
+      }
+
+      function renderSources(sources) {
+        root.innerHTML =
+          '<section class="card notice"><b>♧ ' +
+          sources.length +
+          " source" +
+          (sources.length === 1 ? "" : "s") +
+          " for this claim</b><p>" +
+          esc(claimText) +
+          '</p></section>' +
+          sources
+            .map(
+              (s) =>
+                '<section class="card source-card"><div class="row source-head"><span class="source-icon">▤</span><b>' +
+                esc(s.publisher) +
+                '</b><span class="pill">' +
+                esc(s.rating) +
+                '</span></div><h3>' +
+                esc(s.title) +
+                '</h3><p>Open the full source and compare its context with the claim before sharing it.</p>' +
+                (s.url
+                  ? '<button class="outline" onclick="window.open(\'' +
+                    safe(s.url) +
+                    '\', \'_blank\', \'noopener,noreferrer\')">Read Full Article　↗</button>'
+                  : "") +
+                '</section>'
+            )
+            .join("");
+      }
+
+      function esc(v) {
+        const d = document.createElement("div");
+        d.textContent = v || "";
+        return d.innerHTML;
+      }
+
+      function safe(v) {
+        return String(v || "").replace(/'/g, "%27");
+      }
+
+      function normalizeToken(value) {
+        return String(value || "")
+          .toLowerCase()
+          .trim()
+          .replace(/^https?:\/\//, "")
+          .replace(/^www\./, "")
+          .replace(/\/.*$/, "");
+      }
+
+      function getMatchingSources(data, inputText) {
+        const input = normalizeToken(inputText);
+        const match = data.find((item) => {
+          const claimTextValue = String(item.claim || "").toLowerCase();
+          if (claimTextValue && input.includes(claimTextValue)) {
+            return true;
+          }
+          if (claimTextValue && claimTextValue.includes(input)) {
+            return true;
+          }
+
+          return (item.sources || []).some((source) => {
+            const publisher = String(source.publisher || "").toLowerCase();
+            const title = String(source.title || "").toLowerCase();
+            const url = normalizeToken(source.url);
+            return (
+              publisher.includes(input) ||
+              title.includes(input) ||
+              url.includes(input) ||
+              input.includes(url) ||
+              input.includes(publisher)
+            );
+          });
+        });
+
+        return match ? match.sources || [] : [];
+      }
+
+      async function loadClaimData() {
+        try {
+          const response = await fetch("claims.json");
+          const data = await response.json();
+          return getMatchingSources(data, claimText);
+        } catch (error) {
+          return [];
+        }
+      }
+
+      async function init() {
+        const sourcesFromResult = normalizeSources(r && r.sources);
+        const sources = sourcesFromResult.length
+          ? sourcesFromResult
+          : await loadClaimData();
+
+        if (sources.length) {
+          renderSources(sources);
+        } else {
+          root.innerHTML =
+            '<section class="card empty">No published evidence sources were found for this claim yet.<br><br>Try a more specific claim, then review the original source and publication date.</section>';
+        }
+      }
+
+      init();
+    </script>
+  </body>
+</html>

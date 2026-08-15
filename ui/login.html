@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log In | EduLens AI</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <main class="page-container">
+    <section class="login-page" aria-labelledby="pageTitle">
+      <div class="brand">
+        <!--<div class="logo-glow">
+          <div class="logo" aria-hidden="true">◉</div>
+        </div>-->
+        <img src="images/EduLens-logo.png" alt="EduLens Logo" class="edulens-logo">
+        <p class="app-name">EduLens AI</p>
+      </div>
+
+      <div class="intro">
+        <h1 id="pageTitle">Welcome back</h1>
+        <p>Log in to continue verifying with confidence.</p>
+      </div>
+
+      <form id="loginForm" class="login-form" novalidate>
+        <div class="form-group">
+          <label for="loginEmail">Email</label>
+          <input
+            id="loginEmail"
+            name="email"
+            type="email"
+            placeholder="student@example.com"
+            autocomplete="email"
+            required
+          >
+          <small id="emailError" class="error-message"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+
+          <div class="password-wrapper">
+            <input
+              id="loginPassword"
+              name="password"
+              type="password"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+              required
+            >
+            <button
+              id="togglePasswordBtn"
+              class="toggle-password"
+              type="button"
+              aria-label="Show password"
+            >Show</button>
+          </div>
+
+          <small id="passwordError" class="error-message"></small>
+        </div>
+
+        <button id="forgotPasswordBtn" class="forgot-password" type="button">
+          Forgot password?
+        </button>
+
+        <p id="loginError" class="login-error" aria-live="polite"></p>
+
+        <button id="loginBtn" class="primary-button" type="submit">
+          Log In <span aria-hidden="true">→</span>
+        </button>
+
+        <div class="auth-divider" aria-hidden="true"><span>or</span></div>
+
+        <button id="guestAccessBtn" class="guest-button" type="button">
+          Continue as guest <span aria-hidden="true">→</span>
+        </button>
+        <p class="guest-note">You can explore the chatbot without creating an account.</p>
+      </form>
+
+     
+      <p class="create-account-prompt">
+        New to EduLens?
+        <a href="CreateAccount.html">Create an account</a>
+      </p>
+    </section>
+  </main>
+
+  <!-- Login success popup -->
+  <div id="successPopup" class="popup-overlay" role="dialog" aria-modal="true" aria-labelledby="successTitle" hidden>
+    <div class="success-popup">
+      <div class="success-icon" aria-hidden="true">✓</div>
+      <h2 id="successTitle">Login Successful</h2>
+      <p>Welcome back to TruthLens AI.</p>
+      <p class="redirect-text">Taking you to the chatbot...</p>
+      <button id="continueBtn" class="primary-button" type="button">Continue</button>
+    </div>
+  </div>
+
+  <!-- Forgot-password demo popup -->
+  <div id="forgotPasswordPopup" class="popup-overlay" role="dialog" aria-modal="true" aria-labelledby="forgotTitle" hidden>
+    <div class="forgot-popup">
+      <h2 id="forgotTitle">Forgot your password?</h2>
+      <p>This is a prototype, so password reset is not available yet. Create a new demo account to continue.</p>
+      <button id="closeForgotPopupBtn" class="secondary-button" type="button">Got it</button>
+    </div>
+  </div>
+
+  <script src="login.js"></script>
+</body>
+</html>

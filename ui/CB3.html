@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+.process{
+    background:#fff;
+    text-align:center;
+    padding:0 27px;
+}
+
+.process h1{
+    font-size:27px;
+    margin:35px 0 10px;
+}
+
+.process>p{
+    color:#667085;
+    line-height:1.45;
+    margin:0;
+}
+
+/* =========================
+        PROGRESS RING
+========================= */
+
+.ring{
+    --progress:0;
+
+    width:160px;
+    height:160px;
+    margin:40px auto;
+    border-radius:50%;
+
+    background:
+    conic-gradient(
+        #14a873 calc(var(--progress) * 1%),
+        #4d6399 calc(var(--progress) * 1%),
+        #4d6399 75%,
+        #edf2f8 100%
+    );
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    transition:.15s linear;
+}
+
+.ring::before{
+    content:"";
+    width:136px;
+    height:136px;
+    background:#fff;
+    border-radius:50%;
+    position:absolute;
+}
+
+.ring span{
+    position:relative;
+    z-index:2;
+    text-align:center;
+}
+
+.ring b{
+    display:block;
+    font-size:29px;
+    font-weight:700;
+}
+
+.ring small{
+    display:block;
+    margin-top:4px;
+    color:#667085;
+    font-size:12px;
+    font-weight:400;
+}
+
+/* =========================
+          STEPS
+========================= */
+
+.steps{
+    margin-top:12px;
+    text-align:left;
+}
+
+.step{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px 0;
+    font-weight:600;
+}
+
+.step.off{
+    color:#abb5c5;
+}
+
+.checkbox{
+    width:24px;
+    height:24px;
+    border-radius:50%;
+    background:#edf2f8;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:13px;
+    flex-shrink:0;
+}
+
+.step.load .checkbox{
+    background:#14a873;
+    color:#fff;
+}
+
+.secure{
+    margin-top:30px;
+    color:#667085;
+    font-size:12px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="screen process">
+
+<div class="status"></div>
+
+<h1>Analyzing the post</h1>
+
+<p>
+EduLens AI is checking claims against trusted<br>
+evidence.
+</p>
+
+<div class="ring" id="ring">
+    <span>
+        <b id="progressText">0%</b>
+        <small id="progressLabel">Starting...</small>
+    </span>
+</div>
+
+<div class="card steps">
+
+<div class="step" id="step1">
+    <span class="checkbox">◯</span>
+    Extracting claim
+</div>
+
+<div class="step off" id="step2">
+    <span class="checkbox">◯</span>
+    Searching trusted sources
+</div>
+
+<div class="step off" id="step3">
+    <span class="checkbox">◯</span>
+    Comparing evidence
+</div>
+
+<div class="step off" id="step4">
+    <span class="checkbox">◯</span>
+    Calculating confidence
+</div>
+
+<div class="step off" id="step5">
+    <span class="checkbox">◯</span>
+    Preparing explanation
+</div>
+
+</div>
+
+<div class="secure">
+🔒 Your content is processed securely
+</div>
+
+<button
+id="viewBtn"
+class="primary"
+style="margin-top:25px;display:none;"
+onclick="showResult()">
+
+View Analysis
+
+</button>
+
+</div>
+
+<script src="js/navigation.js"></script>
+
+<script>
+
+const progress=document.getElementById("progressText");
+const label=document.getElementById("progressLabel");
+const button=document.getElementById("viewBtn");
+const ring=document.getElementById("ring");
+
+const steps=[
+    {percent:18,text:"Extracting claim...",id:"step1"},
+    {percent:45,text:"Searching trusted sources...",id:"step2"},
+    {percent:70,text:"Comparing evidence...",id:"step3"},
+    {percent:85,text:"Calculating confidence...",id:"step4"},
+    {percent:100,text:"Preparing explanation...",id:"step5"}
+];
+
+let p=0;
+let current=0;
+let completed=false;
+
+function updateRing(percent){
+
+    progress.textContent=percent+"%";
+    ring.style.setProperty("--progress",percent);
+
+}
+
+function updateStep(index){
+
+    const step=steps[index];
+
+    if(!step) return;
+
+    label.textContent=step.text;
+
+    const el=document.getElementById(step.id);
+
+    el.classList.remove("off");
+    el.classList.add("load");
+
+    el.querySelector(".checkbox").textContent="✓";
+
+}
+
+function finishAnalysis(){
+
+    completed=true;
+
+    updateRing(100);
+
+    label.textContent="Analysis Complete";
+
+    button.style.display="block";
+
+}
+
+const timer=setInterval(function(){
+
+    if(completed) return;
+
+    p++;
+
+    if(p>100) p=100;
+
+    updateRing(p);
+
+    while(current<steps.length && p>=steps[current].percent){
+
+        updateStep(current);
+
+        current++;
+
+    }
+
+    if(p>=100){
+
+        clearInterval(timer);
+
+        finishAnalysis();
+
+    }
+
+},55);
+
+</script>
+
+</body>
+</html>

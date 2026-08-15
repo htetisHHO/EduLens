@@ -1,0 +1,296 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      .chat-head {
+        height: 123px;
+        background: #4d6399;
+        color: #fff;
+        padding: 17px 20px;
+      }
+
+      .chat-brand {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        margin-top: 19px;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+     .tiny-logo {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  overflow: hidden;
+  background: #fff;
+}
+
+      .right {
+        margin-left: auto;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .bell,
+      .avatar {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+      }
+
+      .bell {
+        background: #6579aa;
+      }
+
+      .avatar {
+        background: #10ae72;
+        border: 1px solid #b6edd7;
+        font-size: 10px;
+        color: #fff;
+        font-weight: 700;
+        line-height: 1;
+        padding: 0;
+      }
+
+      .chat-page {
+        padding: 12px 20px 0;
+        background: #fff;
+        min-height: 689px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .chat-page h1 {
+        font-size: 19px;
+        margin: 0 0 3px;
+      }
+
+      .chat-page > p {
+        margin: 0;
+        color: #577099;
+        font-size: 11px;
+      }
+
+      .messages {
+        position: relative;
+        margin-top: 14px;
+        padding-left: 31px;
+      }
+
+      .bot-icon {
+        position: absolute;
+        top: 1px;
+        left: 0;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: #e8fbf2;
+        color: #11a870;
+        display: grid;
+        place-items: center;
+      }
+
+      .bubble {
+        width: 209px;
+        padding: 11px 12px 8px;
+        border: 1px solid #dce5f3;
+        border-radius: 0 16px 16px 16px;
+        font-size: 12px;
+        line-height: 1.35;
+        color: #0d3572;
+        box-shadow: 0 3px 8px #1c3b6609;
+      }
+
+      .time {
+        display: block;
+        margin-top: 6px;
+        color: #8da0bd;
+        font-size: 8px;
+      }
+
+      .reply {
+        width: 191px;
+        margin: 14px 0 0 auto;
+        padding: 11px 12px 8px;
+        border-radius: 10px 10px 0 10px;
+        background: #4d6399;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 1.35;
+      }
+
+      .reply .time {
+        color: #d7e1f7;
+      }
+
+      .composer {
+    margin-top: auto;
+    margin-left: -20px;
+    margin-right: -20px;
+    padding: 12px 20px 15px;
+    border-top: 1px solid #dce6f4;
+}
+
+.input-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.input {
+    flex: 1;
+    height: 46px;
+    border: 1px solid #dce5f3;
+    border-radius: 24px;
+    background: #f7f9fd;
+    padding: 0 18px;
+    color: #173769;
+    font-size: 14px;
+    outline: none;
+}
+
+.input:focus {
+    border-color: #4d6399;
+}
+
+.send-btn {
+    width: 46px;
+    height: 46px;
+    border: none;
+    border-radius: 50%;
+    background: #10ae72;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.send-btn:hover {
+    background: #0d9a65;
+    transform: scale(1.05);
+}
+
+.send-btn:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+.error {
+    min-height: 14px;
+    margin: 6px 2px 0;
+    color: #bd3c45;
+    font-size: 10px;
+}
+
+      .choices .go:disabled {
+        opacity: .65;
+      }
+
+      .error {
+        min-height: 14px;
+        margin: 6px 2px 0;
+        color: #bd3c45;
+        font-size: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="screen">
+      <header class="chat-head">
+        <div class="row between small">
+          
+        </div>
+        <div class="chat-brand">
+          <img class="tiny-logo" src="images/EduLens-logo.png" alt="EduLens logo" onclick="openDrawer()" style="cursor:pointer;">
+          <span onclick="openDrawer()" style="cursor:pointer;">EduLens AI</span>
+          <span class="right">
+            <span class="bell">♧</span>
+            <button class="avatar" type="button" onclick="goProfile()" style="cursor:pointer; border:0; color:#fff;">MK</button>
+          </span>
+        </div>
+      </header>
+      <main class="chat-page">
+        <h1>Analyze a post</h1>
+        <p>Share a claim and I’ll check it against trusted sources.</p>
+        <section class="messages">
+          <span class="bot-icon">♙</span>
+          <div class="bubble">
+            Hi! Paste a social media post or upload a screenshot. I’ll identify the main claim and compare it with reliable evidence.
+            <span class="time">9:41 AM</span>
+          </div>
+          <div class="reply">
+            Can you verify whether this post is accurate?
+            <span class="time">9:42 AM ✓✓</span>
+          </div>
+        </section>
+       <div class="composer">
+    <div class="input-row">
+        <input
+            id="post"
+            class="input"
+            placeholder="Paste a social media post..."
+            onkeydown="if (event.key === 'Enter') { event.preventDefault(); startAnalysis(); }"
+        />
+
+        <button
+            id="analyze"
+            class="send-btn"
+            onclick="startAnalysis()">
+            ↑
+        </button>
+    </div>
+
+    <div id="error" class="error"></div>
+</div>
+      </main>
+    </div>
+    <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
+    <script src="js/navigation.js"></script>
+    <script>
+      let bridge;
+      new QWebChannel(qt.webChannelTransport, function (c) {
+        bridge = c.objects.edulens || c.objects.truthlens;
+      });
+      function startAnalysis() {
+        const post = document.getElementById("post").value.trim();
+        const button = document.getElementById("analyze");
+        const error = document.getElementById("error");
+        error.textContent = "";
+        if (post.length < 12) {
+          error.textContent = "Please paste a longer claim or post.";
+          return;
+        }
+        if (!bridge) {
+          error.textContent = "The educational backend is starting. Please try again.";
+          return;
+        }
+        button.disabled = true;
+        button.textContent = "Checking...";
+       bridge.analyze(post, function (result) {
+    button.disabled = false;
+    button.textContent = "↑";
+          if (!result.ok) {
+            error.textContent = result.error + (result.tip ? " " + result.tip : "");
+            return;
+          }
+          localStorage.setItem("truthlensResult", JSON.stringify(result));
+          localStorage.setItem("currentClaim", post);
+          analyzePost();
+        });
+      }
+    </script>
+  </body>
+</html>

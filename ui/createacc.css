@@ -1,0 +1,289 @@
+:root {
+  --navy: #14213d;
+  --blue: #475d91;
+  --green: #16a36a;
+  --green-dark: #108355;
+  --page-bg: #f6f9fd;
+  --input-bg: #f7f9fc;
+  --border: #e6ecf5;
+  --muted: #667085;
+  --error: #d92d20;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: "Inter", sans-serif;
+  background: var(--page-bg);
+  color: var(--navy);
+}
+
+.page-container {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 32px 18px;
+}
+
+.create-account-page {
+  width: min(100%, 430px);
+  text-align: center;
+}
+
+.brand {
+  margin-bottom: 24px;
+}
+
+/*.logo-glow {
+  width: 94px;
+  height: 94px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  background: #eaf2ff;
+}
+
+.logo {
+  width: 70px;
+  height: 70px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--blue);
+  color: white;
+  font-size: 38px;
+  line-height: 1;
+}*/
+.edulens-logo {
+  width: 120px;
+  height: 120px;
+  display: block;
+  margin: 0 auto 10px;
+  object-fit: contain;
+}
+
+.app-name,
+h1 {
+  font-family: "Funnel Sans", sans-serif;
+}
+
+.app-name {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.intro {
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin: 0 0 6px;
+  font-size: 28px;
+}
+
+.intro p,
+.login-prompt {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.account-form {
+  padding: 20px;
+  text-align: left;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: white;
+  box-shadow: 0 5px 18px rgba(23, 70, 179, 0.07);
+}
+
+.form-group {
+  margin-bottom: 14px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  outline: none;
+  background: var(--input-bg);
+  color: var(--navy);
+  font: inherit;
+  font-size: 14px;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(71, 93, 145, 0.14);
+}
+
+input.input-error {
+  border-color: var(--error);
+}
+
+.input-with-icon {
+  position: relative;
+}
+
+.input-with-icon input {
+  padding-right: 44px;
+}
+
+.email-check {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  display: none;
+  transform: translateY(-50%);
+  color: var(--green);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.email-check.visible {
+  display: block;
+}
+
+.error-message {
+  display: block;
+  min-height: 16px;
+  margin-top: 4px;
+  color: var(--error);
+  font-size: 11px;
+}
+
+.password-rules {
+  margin: 2px 0 18px;
+}
+
+.password-rules p {
+  margin: 5px 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.password-rules p.valid {
+  color: var(--green);
+  font-weight: 600;
+}
+
+.primary-button {
+  width: 100%;
+  min-height: 50px;
+  border: 0;
+  border-radius: 14px;
+  background: var(--green);
+  color: white;
+  cursor: pointer;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  transition: background-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.primary-button:hover {
+  background: var(--green-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(22, 163, 106, 0.22);
+}
+
+.primary-button:focus-visible {
+  outline: 3px solid rgba(22, 163, 106, 0.35);
+  outline-offset: 3px;
+}
+
+.login-prompt {
+  margin-top: 18px;
+}
+
+.login-prompt a {
+  margin-left: 4px;
+  color: var(--blue);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.login-prompt a:hover {
+  text-decoration: underline;
+}
+
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(20, 33, 61, 0.38);
+}
+
+.popup-overlay[hidden] {
+  display: none;
+}
+
+.success-popup {
+  width: min(100%, 320px);
+  min-height: 220px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: white;
+  box-shadow: 0 16px 40px rgba(20, 33, 61, 0.24);
+  text-align: center;
+}
+
+.success-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  background: #e5f7ef;
+  color: var(--green);
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.success-popup h2 {
+  margin: 0 0 8px;
+  font-size: 21px;
+}
+
+.success-popup p {
+  margin: 5px 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.success-popup .redirect-text {
+  margin-bottom: 18px;
+  color: var(--blue);
+  font-weight: 600;
+}
+
+@media (max-width: 390px) {
+  .page-container {
+    padding: 22px 14px;
+  }
+
+  .account-form {
+    padding: 17px;
+  }
+}

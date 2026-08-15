@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account | TruthLens AI</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="createacc.css">
+</head>
+<body>
+  <main class="page-container">
+    <section class="create-account-page" aria-labelledby="pageTitle">
+      <div class="brand">
+        <!--<div class="logo-glow">
+          <div class="logo" aria-hidden="true">◉</div>
+        </div>-->
+        <img
+            class="edulens-logo"
+            src="images/EduLens-logo.png"
+            alt="EduLens logo"
+        >
+        <p class="app-name">EduLens AI</p>
+      </div>
+
+      <div class="intro">
+        <h1 id="pageTitle">Create an account</h1>
+        <p>Start building smarter verification habits today.</p>
+      </div>
+
+      <form id="createAccountForm" class="account-form" novalidate>
+        <div class="form-group">
+          <label for="username">Name</label>
+          <input
+            id="username"
+            name="username"
+            type="text"
+            placeholder="Enter your name"
+            autocomplete="name"
+            required
+          >
+          <small class="error-message" id="usernameError"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+
+          <div class="input-with-icon">
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+              required
+            >
+            <span id="emailCheck" class="email-check" aria-hidden="true">✓</span>
+          </div>
+
+          <small class="error-message" id="emailError"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Create a password"
+            autocomplete="new-password"
+            required
+          >
+          <small class="error-message" id="passwordError"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Confirm password</label>
+          <input
+            id="confirmPassword"
+            name="confirmPassword"
+            type="password"
+            placeholder="Re-enter your password"
+            autocomplete="new-password"
+            required
+          >
+          <small class="error-message" id="confirmPasswordError"></small>
+        </div>
+
+        <div class="password-rules" aria-live="polite">
+          <p id="lengthRule">○ At least 8 characters</p>
+          <p id="matchRule">○ Passwords match</p>
+        </div>
+
+        <button id="createAccountBtn" class="primary-button" type="submit">
+          Create Account <span aria-hidden="true">→</span>
+        </button>
+      </form>
+
+      <p class="login-prompt">
+        Already have an account?
+        <a href="login.html">Log in</a>
+      </p>
+    </section>
+  </main>
+
+  <!-- Success popup starts here -->
+  <div id="successPopup" class="popup-overlay" role="dialog" aria-modal="true" aria-labelledby="successTitle" hidden>
+    <div class="success-popup">
+      <div class="success-icon" aria-hidden="true">✓</div>
+      <h2 id="successTitle">Account Created Successfully</h2>
+      <p>Your account has been created.</p>
+      <p class="redirect-text">Directing you to Login...</p>
+      <button id="continueBtn" class="primary-button" type="button">Continue</button>
+    </div>
+  </div>
+
+  <script src="createacc.js"></script>
+</body>
+</html>

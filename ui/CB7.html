@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .settings-top{
+            height:118px;
+        }
+
+        .topbar{
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            padding:18px 20px 0;
+        }
+
+        .topbar h1{
+            flex:1;
+            text-align:center;
+            margin:0;
+            color:#fff;
+            font-size:20px;
+            font-weight:700;
+        }
+
+        .back-btn,
+        .profile-btn{
+            width:38px;
+            height:38px;
+            border:none;
+            border-radius:50%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            cursor:pointer;
+        }
+
+        .back-btn{
+            background:rgba(255,255,255,.15);
+            color:#fff;
+            font-size:26px;
+        }
+
+        .profile-btn{
+            background:transparent;
+            padding:0;
+        }
+
+        .profile-btn img{
+            width:38px;
+            height:38px;
+            border-radius:50%;
+            display:block;
+        }
+
+        .settings-card{
+            padding:12px 14px;
+            margin-bottom:11px;
+        }
+
+        .setting b{
+            font-size:14px;
+        }
+
+        .setting small{
+            display:block;
+            color:#667085;
+            font-size:10px;
+            margin-top:3px;
+        }
+
+        .source-tags{
+            display:flex;
+            flex-wrap:wrap;
+            gap:7px;
+            margin-top:10px;
+        }
+
+        .save{
+            float:right;
+            color:#13a873;
+            font-size:11px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="screen">
+
+    <header class="top settings-top">
+
+        <div class="status"></div>
+
+        <div class="topbar">
+
+            <button class="back-btn" onclick="goBack()">‹</button>
+
+            <h1>Settings</h1>
+
+            <button class="profile-btn" onclick="goProfile()">
+                <img src="images/EduLens-logo.png" alt="EduLens logo">
+            </button>
+
+        </div>
+
+    </header>
+
+    <main class="page">
+
+        <section class="card settings-card">
+
+            <div class="section-label" style="margin-top:0;">
+                PREFERENCES
+            </div>
+
+            <div class="setting">
+                <span class="setting-icon">☾</span>
+
+                <span>
+                    <b>Dark Mode</b>
+                    <small>Use a darker interface</small>
+                </span>
+
+                <span class="toggle"></span>
+            </div>
+
+            <div class="setting">
+                <span class="setting-icon">文</span>
+
+                <span>
+                    <b>Preferred Language</b>
+                    <small>English</small>
+                </span>
+
+                <span style="margin-left:auto;font-size:22px;color:#667085;">›</span>
+            </div>
+
+            <div class="setting">
+                <span class="setting-icon">♧</span>
+
+                <span>
+                    <b>Notification Settings</b>
+                    <small>Analysis updates enabled</small>
+                </span>
+
+                <span class="toggle"></span>
+            </div>
+
+        </section>
+
+       <section class="card settings-card">
+
+    <div class="setting" onclick="window.location.href='LearnMore.html';" style="cursor:pointer;">
+        <span class="setting-icon" style="background:#eaf8f1;color:#13a873;">ⓘ</span>
+
+        <span>
+            <b>About the Project</b>
+            <small>EduLens AI · Version 1.0</small>
+        </span>
+
+        <span style="margin-left:auto;font-size:22px;color:#667085;">›</span>
+    </div>
+
+</section>
+
+<script src="js/navigation.js"></script>
+
+</body>
+</html>

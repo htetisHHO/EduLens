@@ -1,0 +1,274 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .chat-head {
+            height: 123px;
+            background: #4d6399;
+            color: #fff;
+            padding: 10px 20px;
+        }
+
+        .chat-brand {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            margin-top: 5px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .tiny-logo {
+            width: 30px;
+            height: 30px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            object-fit: cover;
+            object-fit: contain;
+            background: #fff;
+            color: #4d6399;
+            display: grid;
+            place-items: center;
+            padding: 0;
+            font-size: 16px;
+            line-height: 1;
+        }
+        .right {
+            margin-left: auto;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .bell,
+        .avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+        }
+
+        .bell {
+            background: #6579aa;
+        }
+
+        .avatar {
+            background: #10ae72;
+            border: 1px solid #b6edd7;
+            font-size: 10px;
+            color: #fff;
+            font-weight: 700;
+            line-height: 1;
+            padding: 0;
+        }
+
+        .topbar .icon-btn {
+            width: 38px;
+            height: 38px;
+            border: 0;
+            border-radius: 50%;
+            background: #6b7ead;
+            color: #fff;
+            display: grid;
+            place-items: center;
+            font-size: 22px;
+            line-height: 1;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+        }
+        .topbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.topbar h1 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.topbar .icon-btn {
+    flex-shrink: 0;
+}
+
+        .profile-top {
+            height: 118px;
+        }
+
+        .profile-card {
+            padding: 14px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 15px;
+        }
+
+        .portrait {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            border: 2px solid #4d6399;
+            background: #eef3fb;
+            color: #4d6399;
+            display: grid;
+            place-items: center;
+            font-size: 36px;
+        }
+
+        .profile-card h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .profile-card p {
+            margin: 5px 0;
+            color: #667085;
+            font-size: 12px;
+        }
+
+        .statgrid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 9px;
+            margin: 11px 0;
+        }
+
+        .stat {
+            height: 102px;
+            border-radius: 16px;
+            background: #4d6399;
+            color: white;
+            padding: 15px 13px;
+        }
+
+        .stat b {
+            display: block;
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        .stat small {
+            font-size: 9px;
+            color: #dce4f5;
+        }
+
+        .favorite {
+            padding: 14px;
+            margin-bottom: 10px;
+        }
+
+        .favorite h3 {
+            font-size: 14px;
+            margin: 0 0 11px;
+        }
+
+        .progress {
+            padding: 14px;
+        }
+
+        .progress h3 {
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .bar {
+            height: 9px;
+            background: #e3ebf5;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+
+        .bar i {
+            display: block;
+            width: 68%;
+            height: 100%;
+            border-radius: 6px;
+            background: #11aa71;
+        }
+
+        .achieve {
+            margin-top: 10px;
+            padding: 15px;
+            background: #eaf8f1;
+            border-color: #bdebd5;
+        }
+
+        .achieve h3 {
+            font-size: 14px;
+            margin: 0 0 10px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 9px 10px;
+            border-radius: 18px;
+            background: #13a873;
+            color: #fff;
+            font-size: 9px;
+            margin-right: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="screen">
+        <header class="chat-head profile-top">
+            <div class="chat-brand">
+                <img class="tiny-logo" src="images/EduLens-logo.png" alt="EduLens logo" onclick="goHome()" style="cursor:pointer;">
+                <span onclick="goHome()" style="cursor:pointer;">EduLens AI</span>
+                <span class="right">
+                    <span class="bell">♧</span>
+                    <button class="avatar" type="button" onclick="goProfile()" style="cursor:pointer; border:0; color:#fff;">MK</button>
+                </span>
+            </div>
+            <div class="topbar">
+                <button class="icon-btn back" onclick="goBack()">‹</button>
+                <h1>My Profile</h1>
+            </div>
+        </header>
+
+        <main class="page">
+            <section class="card profile-card">
+                <div class="portrait">♙</div>
+                <div>
+                    <h2>Mya Khine</h2>
+                    <p>EduLens Learner · Level 4</p>
+                    <span class="pill">♧ Verified Learner</span>
+                </div>
+            </section>
+
+            <div class="statgrid">
+                <div class="stat">▧<b>128</b><small>Analyses</small></div>
+                <div class="stat">♧<b>94%</b><small>Accuracy feedback</small></div>
+                <div class="stat">♨<b>12 days</b><small>Learning streak</small></div>
+            </div>
+
+            <section class="card favorite">
+                <h3>Favorite trusted sources <span style="float:right;color:#13a873">♡</span></h3>
+                <span class="tag">▰ Reuters</span>
+                <span class="tag">♡ WHO</span>
+                <span class="tag">◉ NASA</span>
+            </section>
+
+            <section class="card progress">
+                <h3>Daily Goal <span style="float:right;color:#13a873">1/3</span></h3>
+                <div class="bar"><i style="width:33.33%"></i></div>
+                <p class="small muted">2 lessons until your next evidence-literacy badge.</p>
+            </section>
+
+            <section class="card achieve">
+                <h3>Achievements</h3>
+                <span class="badge">◉ Fact Finder</span>
+                <span class="badge">⚑ Source Scout</span>
+                <span class="badge">♧ Critical Thinker</span>
+            </section>
+        </main>
+    
+    
+    <script src="js/navigation.js"></script>
+</body>
+</html>

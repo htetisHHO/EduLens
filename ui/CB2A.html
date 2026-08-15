@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .drawer {
+            width: 336px;
+            min-height: 812px;
+            background: #fff;
+        }
+
+        .drawer-head {
+            height: 185px;
+            background: #4d6399;
+            color: #fff;
+            padding: 25px 20px;
+        }
+
+        .drawer-head .x {
+            float: right;
+            background: #6c7ead;
+            color: #fff;
+        }
+
+        .profile-mini {
+            display: flex;
+            gap: 11px;
+            align-items: center;
+            margin-top: 13px;
+        }
+
+        .profile-mini .avatar {
+            width: 44px;
+            height: 44px;
+            font-size: 14px;
+        }
+
+        .profile-mini b {
+            font-size: 14px;
+        }
+
+        .profile-mini small {
+            display: block;
+            color: #e2e8f8;
+            margin-top: 3px;
+        }
+
+        .drawer .page {
+            padding: 10px 14px;
+        }
+
+        .drawer footer {
+            position: absolute;
+            bottom: 0;
+            width: 336px;
+            padding: 17px 20px;
+            border-top: 1px solid #e8edf4;
+            color: #6b7484;
+            font-size: 11px;
+        }
+         .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .brand .tiny-logo {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        object-fit: cover;
+        flex-shrink: 0;
+        display: block;
+        background: #fff;
+    }
+    </style>
+</head>
+<body>
+    <div class="screen" style="background:#aab3c5">
+        <aside class="drawer">
+            <header class="drawer-head">
+                <div class="brand">
+    <img class="tiny-logo" src="images/EduLens-logo.png" alt="EduLens logo">
+    EduLens AI
+    <button class="icon-btn x" onclick="goBack()">×</button>
+</div>
+                <div class="profile-mini">
+                    <span class="avatar">MK</span>
+                    <span>
+                        <b>Mya Khine</b>
+                        <small>Verified Learner · Level 4</small>
+                    </span>
+                </div>
+            </header>
+
+            <div class="page">
+                <div class="section-label">NAVIGATION</div>
+                <div class="nav-item active" onclick="openHome()">
+                    <span class="nav-ico">◯</span>
+                    <span>
+                        <b>Home Chat</b>
+                        <small>Opens Screen 2</small>
+                    </span>
+                    <i class="arrow">›</i>
+                </div>
+                <div class="nav-item" onclick="openHistory()">
+                    <span class="nav-ico">◴</span>
+                    <span>
+                        <b>Analysis History</b>
+                        <small>Opens Screen 7</small>
+                    </span>
+                    <i class="arrow">›</i>
+                </div>
+                <div class="nav-item" onclick="openSettings()">
+                    <span class="nav-ico">⚙</span>
+                    <span>
+                        <b>Settings</b>
+                        <small>Opens Screen 8</small>
+                    </span>
+                    <i class="arrow">›</i>
+                </div>
+                <div class="nav-item" onclick="openProfile()">
+                    <span class="nav-ico">♙</span>
+                    <span>
+                        <b>My Profile</b>
+                        <small>Opens Screen 9</small>
+                    </span>
+                    <i class="arrow">›</i>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-ico" style="background:#eaf8f1;color:#13a873">⌂</span>
+                    <span>
+                        <b>Learning Center</b>
+                    </span>
+                </div>
+            </div>
+
+            <footer>♧　Evidence-first and privacy-conscious</footer>
+        </aside>
+    </div>
+    <script src="js/navigation.js"></script>
+</body>
+</html>
+
